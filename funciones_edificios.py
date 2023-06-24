@@ -10,6 +10,7 @@ lista_filas = []
 lista_columnas = []
 lista_totales = []
 apartamentos = numpy.zeros((10,4),int)
+
 #primera opc del sistema
 def mostrar_menu():
     print("""
@@ -33,13 +34,14 @@ def validacion_opcion():
 def ver_edifico():
     os.system('cls')
     print("\t Ver apartamentos")
-    contador=1
+    contador=10
+    print("           1 2 3 4")
     for x in range(10):
-        print(f"pisos {(x+1)}:", end="   ")
+        print(f"pisos {contador}:", end="   ")
         for y in range(4):
-            print(f"nro{y+1} {apartamentos[x][y]}", end=" ")
-            contador+=1
+            print(f"{apartamentos[x][y]}", end=" ")
         print("\n")
+        contador-=1
     time.sleep(3)
 
 #------------------------------------------------------
@@ -72,7 +74,18 @@ def validar_nombre():
 def buscar_usuario():
     rut=confirmar_rut()
     if rut in lista_ruts:
+        posicion= lista_ruts.index(rut)
         print("cargando datos")
+        soli_piso=int(input("Ingrese nro de piso_ "))
+        nro_apartemento=int(input("ingrese nro de aprtamento_ "))
+        Contador=1
+        apartamentos[]
+        for x in range(10):
+            for y in range(4):
+                if apartamentos[x][y]==0
+                    apartamentos.appen(Contador)
+                
+        
     else:
         print("no se encuentra usuario")
 #------------------------------------------------------
