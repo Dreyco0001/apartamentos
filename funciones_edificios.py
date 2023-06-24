@@ -1,7 +1,8 @@
 import os
 import time
 import numpy
-
+#por regla de negocio los apartamentos del piso 1 hasta el 7 cuestan 150 millones
+# y los apartamentos del 10 al 8 cuestan 200 millones
 
 lista_ruts = []
 lista_nombres = []
@@ -9,7 +10,7 @@ lista_filas = []
 lista_columnas = []
 lista_totales = []
 apartamentos = numpy.zeros((10,4),int)
-
+#primera opc del sistema
 def mostrar_menu():
     print("""
 \t Menú 
@@ -41,6 +42,9 @@ def ver_edifico():
         print("\n")
     time.sleep(3)
 
+#------------------------------------------------------
+# 2 opcion def
+#------------------------------------------------------
 def confirmar_rut():
     while True:
         try:
@@ -60,9 +64,25 @@ def validar_nombre():
         else:
             print("ERROR! EL NOMBRE DEBE TENER AL MENOS 3 LETRAS!")
             
+#------------------------------------------------------
+    
+#------------------------------------------------------
+# 3 opcion
+#------------------------------------------------------
+def buscar_usuario():
+    rut=confirmar_rut()
+    if rut in lista_ruts:
+        print("cargando datos")
+    else:
+        print("no se encuentra usuario")
+#------------------------------------------------------
+#4 opcin
+#------------------------------------------------------
 
 
-
+#------------------------------------------------------
+#sistema cierre
+#------------------------------------------------------
 def cerrar_todo():
     while True:
         try:
