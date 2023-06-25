@@ -11,8 +11,18 @@ lista_nombres = []
 lista_piso = []
 lista_departamento = []
 lista_totales = {}
-apartamentos = numpy.zeros((10,4),int)
+apartamentos = numpy.empty((10,4),object)
+apartamentos.fill("🟨")
 
+'''
+for x in range(10):#filas
+        print(f"piso {contador}\t|", end=" ")
+        for y in range(4):#columnas
+            print(arreglo_hotel[x][y], end=" ")
+        print()
+        contador += -1
+    
+'''
 
 #primera opc del sistema
 def mostrar_menu():
@@ -39,12 +49,12 @@ def ver_edifico():
     print("\t Ver apartamentos")
     contador=10
     print("           1 2 3 4")
-    for x in range(10):
-        print(f"pisos {contador} \t|:", end="   ")
-        for y in range(4):
-            print(f"{apartamentos[x][y]}", end=" ")
-        print("\n")
-        contador-=1
+    for x in range(10):#filas
+        print(f"piso {contador}\t|", end=" ")
+        for y in range(4):#columnas
+            print(apartamentos[x][y], end=" ")
+        print()
+        contador += -1
     time.sleep(3)
 
 #------------------------------------------------------
@@ -89,8 +99,14 @@ def opc_2():
                 nombre=validar_nombre()
                 piso=int(input("ingrese piso que desea"))
                 apartamento=int(input("ingese nro de apartamento"))
-                if apartamentos[piso-1][apartamento-1]==0:
-                    apartamentos[piso-1][apartamento-1]=1
+                if piso<=5:
+                    piso+= -piso*2
+                elif piso>=6:
+                    piso+= -piso*2
+                
+                
+                if apartamentos[piso-1][apartamento-1]=="🟨":
+                    apartamentos[piso-1][apartamento-1]="✅"
                     lista_piso.append(piso-1)
                     lista_departamento.append(apartamento-1)
                 
@@ -132,8 +148,8 @@ def opc_2():
                 nombre=validar_nombre()
                 piso=int(input("ingrese piso que desea"))
                 apartamento=int(input("ingese nro de apartamento"))
-                if apartamentos[piso-1][apartamento-1]==0:
-                    apartamentos[piso-1][apartamento-1]=1
+                if apartamentos[piso-1][apartamento-1]=="🟨":
+                    apartamentos[piso-1][apartamento-1]="✅"
                     lista_piso.append(piso-1)
                     lista_departamento.append(apartamento-1)
                 
@@ -177,8 +193,9 @@ def buscar_usuario():
         apartamentos=[]
         for x in range(10):
             for y in range(4):
-                if apartamentos[x][y]==0:
+                if apartamentos[x][y]=="🟨":
                     apartamentos.appen(Contador)
+        
                 
         
     else:
