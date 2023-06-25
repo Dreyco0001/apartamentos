@@ -3,13 +3,16 @@ import time
 import numpy
 #por regla de negocio los apartamentos del piso 1 hasta el 7 cuestan 150 millones
 # y los apartamentos del 10 al 8 cuestan 200 millones
+apartamentos_precio_1=150000000
+apartamentos_precio_2=200000000
 
 lista_ruts = []
 lista_nombres = []
-lista_filas = []
-lista_columnas = []
-lista_totales = []
+lista_piso = []
+lista_departamento = []
+lista_totales = {}
 apartamentos = numpy.zeros((10,4),int)
+
 
 #primera opc del sistema
 def mostrar_menu():
@@ -37,7 +40,7 @@ def ver_edifico():
     contador=10
     print("           1 2 3 4")
     for x in range(10):
-        print(f"pisos {contador}:", end="   ")
+        print(f"pisos {contador} \t|:", end="   ")
         for y in range(4):
             print(f"{apartamentos[x][y]}", end=" ")
         print("\n")
@@ -66,6 +69,98 @@ def validar_nombre():
         else:
             print("ERROR! EL NOMBRE DEBE TENER AL MENOS 3 LETRAS!")
             
+def opc_2():
+    while True:
+        if 0 not in(apartamentos):
+            print("departamentos no disponibles")
+            continue
+        rut= confirmar_rut()
+        if rut in(lista_ruts):
+            while True:
+                try:
+                    otro=int(input("Desea otra compra? (si=1/no=2)"))
+                    if otro in(1,2):
+                        break
+                    else:
+                        print("ingrese nro disponible")
+                except:
+                    print("solo nro enteros")
+            if otro==1:
+                nombre=validar_nombre()
+                piso=int(input("ingrese piso que desea"))
+                apartamento=int(input("ingese nro de apartamento"))
+                if apartamentos[piso-1][apartamento-1]==0:
+                    apartamentos[piso-1][apartamento-1]=1
+                    lista_piso.append(piso-1)
+                    lista_departamento.append(apartamento-1)
+                
+                while True:
+                    try:
+                        pagar_opc=int(input("Desea pagar? (si?1/no=2)"))
+                        if pagar_opc in(1,2):
+                            break
+                        else:
+                            print("ingrese un nro valido")
+                    except:
+                        print("solo nro enteros")
+                if pagar_opc==1:
+                    lista_ruts.append(rut)
+                    lista_nombres.append(nombre)
+                    if (piso-1)>=9 and (piso)<=7:
+                        print("cargo de pago automatico a su nombre")
+                        lista_totales+=apartamentos_precio_2
+                    elif (piso-1)<=0 and (piso-1)>=6:
+                        print("cargo de pago automatico a su nombre")
+                        lista_totales+=apartamentos_precio_1
+                elif pagar_opc==2:
+                    print("regresando")
+                    continue
+            elif otro==2:
+                print("regresando")
+                continue
+        else:
+            while True:
+                try:
+                    otro=int(input("Desea otra compra? (si=1/no=2)"))
+                    if otro in(1,2):
+                        break
+                    else:
+                        print("ingrese nro disponible")
+                except:
+                    print("solo nro enteros")
+            if otro==1:
+                nombre=validar_nombre()
+                piso=int(input("ingrese piso que desea"))
+                apartamento=int(input("ingese nro de apartamento"))
+                if apartamentos[piso-1][apartamento-1]==0:
+                    apartamentos[piso-1][apartamento-1]=1
+                    lista_piso.append(piso-1)
+                    lista_departamento.append(apartamento-1)
+                
+                while True:
+                    try:
+                        pagar_opc=int(input("Desea pagar? (si?1/no=2)"))
+                        if pagar_opc in(1,2):
+                            break
+                        else:
+                            print("ingrese un nro valido")
+                    except:
+                        print("solo nro enteros")
+                if pagar_opc==1:
+                    lista_ruts.append(rut)
+                    lista_nombres.append(nombre)
+                    if (piso-1)>=9 and (piso)<=7:
+                        print("cargo de pago automatico a su nombre")
+                        lista_totales+=apartamentos_precio_2
+                    elif (piso-1)<=0 and (piso-1)>=6:
+                        print("cargo de pago automatico a su nombre")
+                        lista_totales+=apartamentos_precio_1
+                elif pagar_opc==2:
+                    print("regresando")
+                    continue
+            elif otro==2:
+                print("regresando")
+                continue
 #------------------------------------------------------
     
 #------------------------------------------------------
@@ -79,10 +174,10 @@ def buscar_usuario():
         soli_piso=int(input("Ingrese nro de piso_ "))
         nro_apartemento=int(input("ingrese nro de aprtamento_ "))
         Contador=1
-        apartamentos[]
+        apartamentos=[]
         for x in range(10):
             for y in range(4):
-                if apartamentos[x][y]==0
+                if apartamentos[x][y]==0:
                     apartamentos.appen(Contador)
                 
         
@@ -91,7 +186,10 @@ def buscar_usuario():
 #------------------------------------------------------
 #4 opcin
 #------------------------------------------------------
-
+def cantidad_ganancias():
+    print("cargando ganancias")
+    print(sum(lista_totales))
+    
 
 #------------------------------------------------------
 #sistema cierre
