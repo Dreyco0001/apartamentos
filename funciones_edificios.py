@@ -187,15 +187,17 @@ def buscar_usuario():
     if rut in lista_ruts:
         posicion= lista_ruts.index(rut)
         print("cargando datos")
-        soli_piso=int(input("Ingrese nro de piso_ "))
-        nro_apartemento=int(input("ingrese nro de aprtamento_ "))
-        Contador=1
-        apartamentos=[]
-        for x in range(10):
-            for y in range(4):
-                if apartamentos[x][y]=="🟨":
-                    apartamentos.appen(Contador)
-        
+        fila=lista_piso(posicion)
+        departa_comprados=lista_departamento(posicion)
+        nombre=lista_nombres(posicion)
+        print(f''' 
+              datos Rut: {rut}
+              nombre: {nombre}
+              
+              departamento(s): {departa_comprados}
+              
+              ''')
+        time.sleep(4)
                 
         
     else:
